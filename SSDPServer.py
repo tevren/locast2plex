@@ -73,7 +73,7 @@ class SSDPServer:
         (host, port) = host_port
 
         try:
-            header, payload = data.decode().split('\r\n\r\n')[:2]
+            header, _ = data.decode().split('\r\n\r\n')[:2]
         except ValueError as err:
             logger.error(err)
             return

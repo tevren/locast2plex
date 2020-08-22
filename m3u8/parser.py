@@ -335,7 +335,7 @@ def _parse_simple_parameter(line, data, cast_to=str):
 
 
 def _parse_cueout_cont(line, state):
-    param, value = line.split(':', 1)
+    _, value = line.split(':', 1)
     res = re.match('.*Duration=(.*),SCTE35=(.*)$', value)
     if res:
         state['current_cue_out_duration'] = res.group(1)
@@ -348,7 +348,7 @@ def _cueout_no_duration(line):
         return (None, None)
 
 def _cueout_elemental(line, state, prevline):
-    param, value = line.split(':', 1)
+    _, value = line.split(':', 1)
     res = re.match('.*EXT-OATCLS-SCTE35:(.*)$', prevline)
     if res:
         return (res.group(1), value)
@@ -356,7 +356,7 @@ def _cueout_elemental(line, state, prevline):
         return None
 
 def _cueout_envivio(line, state, prevline):
-    param, value = line.split(':', 1)
+    _, value = line.split(':', 1)
     res = re.match('.*DURATION=(.*),.*,CUE="(.*)"', value)
     if res:
         return (res.group(2), res.group(1))
@@ -366,7 +366,7 @@ def _cueout_envivio(line, state, prevline):
 def _cueout_simple(line):
     # this needs to be called after _cueout_elemental
     # as it would capture those cues incompletely
-    param, value = line.split(':', 1)
+    _, value = line.split(':', 1)
     res = re.match('^(\d+(?:\.\d)?\d*)$', value)
     if res:
         return (None, res.group(1))
