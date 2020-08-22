@@ -1,10 +1,10 @@
-import urllib, zipfile, os, sys, datetime, json
+import urllib.request, urllib.parse, urllib.error, zipfile, os, sys, datetime, json
 
 os.chdir(os.path.dirname(sys.argv[0]))
 
 print('Downloading the latest FCC facilities database...')
 
-urllib.urlretrieve("https://transition.fcc.gov/ftp/Bureaus/MB/Databases/cdbs/facility.zip", "facility.zip")
+urllib.request.urlretrieve("https://transition.fcc.gov/ftp/Bureaus/MB/Databases/cdbs/facility.zip", "facility.zip")
 
 print('Unzipping FCC facilities database...')
 
@@ -105,4 +105,4 @@ with open("fcc_dma_markets_deduped.txt", "w") as tv_dma_file:
         tv_dma_file.write("%s\n" % dma_list_item)
 
 print('Complete!')
-print('Found ' + str(fac_found_count) + ' items.')
+print(('Found ' + str(fac_found_count) + ' items.'))

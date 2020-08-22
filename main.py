@@ -1,4 +1,4 @@
-import subprocess, os, sys, random, threading, socket, time, SocketServer
+import subprocess, os, sys, random, threading, socket, time, socketserver
 import SSDPServer
 import LocastService
 from templates import templates
@@ -122,7 +122,7 @@ class PlexHttpHandler(BaseHTTPRequestHandler):
             self.end_headers()
 
         else:
-            print("Unknown request to " + self.path)
+            print(("Unknown request to " + self.path))
             self.send_response(501)
             self.send_header('Content-type','text/html')
             self.end_headers()
@@ -173,14 +173,14 @@ class PlexHttpHandler(BaseHTTPRequestHandler):
                 self.send_header('Content-type','text/html')
                 self.end_headers()
             else:
-                print("Unknown scan command " + queryData['scan'])
+                print(("Unknown scan command " + queryData['scan']))
                 self.send_response(400)
                 self.send_header('Content-type','text/html')
                 self.end_headers()
                 self.wfile.write(self.templates['htmlError'].format(queryData['scan'] + ' is not a valid scan command'))
 
         else:
-            print("Unknown request to " + contentPath)
+            print(("Unknown request to " + contentPath))
 
         return
 
@@ -268,7 +268,7 @@ if __name__ == '__main__':
             HOST_ADDY = argument[7:]
 
 
-    print("Locast2Plex v" + CURRENT_VERSION)
+    print(("Locast2Plex v" + CURRENT_VERSION))
     if DEBUG_MODE:
         print("DEBUG MODE ACTIVE")
 
@@ -287,7 +287,7 @@ if __name__ == '__main__':
         with open("service_uuid", 'r') as uuid_file:
             DEVICE_UUID = uuid_file.read().replace('\n', '')
 
-    print("UUID set to: " + DEVICE_UUID + "...")
+    print(("UUID set to: " + DEVICE_UUID + "..."))
 
 
     # check environment vars
@@ -324,7 +324,7 @@ if __name__ == '__main__':
         station_list = locast.get_stations()
 
         try:
-            print("Starting device server on " + LISTEN_ADDY + ":" + LISTEN_PORT)
+            print(("Starting device server on " + LISTEN_ADDY + ":" + LISTEN_PORT))
             serverSocket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
             serverSocket.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
             serverSocket.bind((LISTEN_ADDY, int(LISTEN_PORT)))
