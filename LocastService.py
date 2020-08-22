@@ -39,11 +39,11 @@ class LocastService:
             loginOpn = urllib.request.urlopen(loginReq)
             loginRes = json.load(loginOpn)
             loginOpn.close()
-        except urllib.error.URLError as urlError:
-            print(("Error during login: " + str(urlError.reason)))
-            return False
         except urllib.error.HTTPError as httpError:
             print(("Error during login: " + str(httpError.reason)))
+            return False
+        except urllib.error.URLError as urlError:
+            print(("Error during login: " + str(urlError.reason)))
             return False
         except:
             loginErr = sys.exc_info()[0]
@@ -68,11 +68,11 @@ class LocastService:
             userOpn = urllib.request.urlopen(userReq)
             userRes = json.load(userOpn)
             userOpn.close()
-        except urllib.error.URLError as urlError:
-            print(("Error during user info request: " + str(urlError.reason)))
-            return False
         except urllib.error.HTTPError as httpError:
             print(("Error during user info request: " + str(httpError.reason)))
+            return False
+        except urllib.error.URLError as urlError:
+            print(("Error during user info request: " + str(urlError.reason)))
             return False
         except:
             userInfoErr = sys.exc_info()[0]
@@ -105,11 +105,11 @@ class LocastService:
                 geoOpn = urllib.request.urlopen(geoReq)
                 geoRes = json.load(geoOpn)
                 geoOpn.close()
-            except urllib.error.URLError as urlError:
-                print(("Error during geo IP acquisition: " + str(urlError.reason)))
-                return False
             except urllib.error.HTTPError as httpError:
                 print(("Error during geo IP acquisition: " + str(httpError.reason)))
+                return False
+            except urllib.error.URLError as urlError:
+                print(("Error during geo IP acquisition: " + str(urlError.reason)))
                 return False
             except:
                 geoIpErr = sys.exc_info()[0]
@@ -134,11 +134,11 @@ class LocastService:
                 dmaOpn = urllib.request.urlopen(dmaReq)
                 dmaRes = json.load(dmaOpn)
                 dmaOpn.close()
-            except urllib.error.URLError as urlError:
-                print(("Error when getting the users's DMA: " + str(urlError.reason)))
-                return False
             except urllib.error.HTTPError as httpError:
                 print(("Error when getting the users's DMA: " + str(httpError.reason)))
+                return False
+            except urllib.error.URLError as urlError:
+                print(("Error when getting the users's DMA: " + str(urlError.reason)))
                 return False
             except:
                 dmaErr = sys.exc_info()[0]
@@ -172,12 +172,11 @@ class LocastService:
             stationsOpn = urllib.request.urlopen(stationsReq)
             stationsRes = json.load(stationsOpn)
             stationsOpn.close()
-
-        except urllib.error.URLError as urlError:
-            print(("Error when getting the list of stations: " + str(urlError.reason)))
-            return False
         except urllib.error.HTTPError as httpError:
             print(("Error when getting the list of stations: " + str(httpError.reason)))
+            return False
+        except urllib.error.URLError as urlError:
+            print(("Error when getting the list of stations: " + str(urlError.reason)))
             return False
         except:
             stationErr = sys.exc_info()[0]
@@ -395,11 +394,11 @@ class LocastService:
             videoUrlOpn = urllib.request.urlopen(videoUrlReq)
             videoUrlRes = json.load(videoUrlOpn)
             videoUrlOpn.close()
-        except urllib.error.URLError as urlError:
-            print(("Error when getting the video URL: " + str(urlError.reason)))
-            return False
         except urllib.error.HTTPError as httpError:
             print(("Error when getting the video URL: " + str(httpError.reason)))
+            return False
+        except urllib.error.URLError as urlError:
+            print(("Error when getting the video URL: " + str(urlError.reason)))
             return False
         except:
             videoUrlReqErr = sys.exc_info()[0]
