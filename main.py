@@ -3,7 +3,7 @@ import SSDPServer
 import LocastService
 from templates import templates
 from functools import partial
-from BaseHTTPServer import BaseHTTPRequestHandler, HTTPServer
+from http.server import BaseHTTPRequestHandler, HTTPServer
 from multiprocessing import Process
 
 
